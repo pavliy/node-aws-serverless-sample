@@ -1,0 +1,14 @@
+{
+  "name": "products",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "pnpm run -r build",
+    "test": "pnpm run -r test --passWithNoTests",
+    "test:coverage": "pnpm run -r test:coverage --passWithNoTests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

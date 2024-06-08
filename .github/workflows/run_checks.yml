@@ -1,0 +1,39 @@
+on:
+    push:
+      branches:
+        - main
+    pull_request:
+      types: [opened, synchronize, reopened, ready_for_review]
+
+name: Run ci
+
+jobs:
+    ci-checks:
+      name: CI
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          node-version: [20]
+      timeout-minutes: 15
+  
+      steps:
+        - uses: actions/checkout@v4
+        - name: Install pnpm
+          uses: pnpm/action-setup@v4
+          with:
+            version: 9
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v4
+          with:
+            node-version: ${{ matrix.node-version }}
+            cache: 'pnpm'
+        - run: pnpm i
+        - run: pnpm test
+        - name: Save Test Results
+          if: always()
+          uses: actions/upload-artifact@v4
+          with:
+            name: test-results
+            path: |
+              coverage
+  

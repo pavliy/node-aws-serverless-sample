@@ -1,0 +1,33 @@
+{
+  "name": "@products/get-items",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "build": "tsc --noemit && node --loader ts-node/esm build.ts",
+    "postbuild": "cd ../../dist/lambdas/products-get-items && zip -r products_get_items.zip index.mjs*",
+    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" npx jest",
+    "test:coverage": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" npx jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-lambda-powertools/logger": "^2.1.1",
+    "@aws-sdk/client-dynamodb": "^3.585.0",
+    "@aws-sdk/lib-dynamodb": "^3.585.0",
+    "@products/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@aws-sdk/types": "^3.577.0",
+    "@jest/globals": "^29.7.0",
+    "@swc/jest": "^0.2.36",
+    "@types/aws-lambda": "^8.10.137",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.12",
+    "esbuild": "^0.21.1",
+    "jest": "^29.7.0",
+    "ts-node": "^10.9.2"
+  }
+}
