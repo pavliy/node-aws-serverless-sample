@@ -24,4 +24,11 @@ jobs:
         run: |
           pnpm install
           pnpm build
-     ## We then can add upload step to storage like S3 or GCS
+     ## We then can add upload step to storage like S3 or GCS. But for now we will just attach it to GH action run
+      - name: Save Build Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            dist
