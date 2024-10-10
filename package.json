@@ -6,9 +6,21 @@
   "scripts": {
     "build": "pnpm run -r build",
     "test": "pnpm run -r test --passWithNoTests",
-    "test:coverage": "pnpm run -r test:coverage --passWithNoTests"
+    "test:coverage": "pnpm run -r test:coverage --passWithNoTests",
+    "test:integration": "jest --config=./automation/integration/jest.config.ts --runInBand",
+    "test:integration:watch": "jest --config=./automation/integration/jest.config.ts --watch --runInBand"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@aws-sdk/client-sqs": "^3.658.1",
+    "@swc/jest": "^0.2.36",
+    "@testcontainers/localstack": "^10.13.1",
+    "@types/jest": "^29.5.13",
+    "jest": "^29.7.0",
+    "testcontainers": "^10.13.1",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2"
+  }
 }

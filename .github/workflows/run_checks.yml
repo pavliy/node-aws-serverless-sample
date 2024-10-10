@@ -29,6 +29,7 @@ jobs:
             cache: 'pnpm'
         - run: pnpm i
         - run: pnpm test:coverage
+        - run: pnpm run test:integration
         - name: Save Test Results
           if: always()
           uses: actions/upload-artifact@v4
