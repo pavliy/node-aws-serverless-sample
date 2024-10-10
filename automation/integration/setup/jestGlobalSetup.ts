@@ -53,7 +53,7 @@ const globalBefore = async (): Promise<void> => {
     console.info('Terraform plan completed');
 
     console.info('Running terraform apply...');
-    execSync('echo yes | terraform apply', { stdio: 'inherit', cwd: terraformDirectory, env: process.env });
+    execSync('terraform apply -lock -auto-approve', { stdio: 'inherit', cwd: terraformDirectory, env: process.env });
     console.info('Terraform apply completed')
 
  console.info('Setup is completed')
